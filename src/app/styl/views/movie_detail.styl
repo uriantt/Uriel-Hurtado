@@ -1,0 +1,530 @@
+.movie-detail {
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 65px
+    height: calc(100% - 65px)
+    user-select: none
+    backface-visibility: hidden
+    display: block
+    background-color: $BgColor1
+    .backdrop-overlay {
+        width: 100%
+        height: 100%
+        position: absolute
+        opacity: 0.6
+        background-color: #000
+    }
+    .backdrop {
+        width: 100%
+        height: 100%
+        position: absolute
+        display: none
+        background-repeat: no-repeat
+        background-size: cover
+    }
+    .mcover-image {
+        float: left
+        width: auto
+        max-width: 50vh
+        position: relative
+        height: 100%
+        margin-right: 2%
+        border-radius: 4px
+        margin-left: 5%
+        background-color $BgColor1
+        opacity 0
+        backface-visibility: hidden
+    }
+    .container {
+        width: 100%
+        position: relative
+        height: 80%
+        border-radius: 4px
+        top: 10%
+        backface-visibility: hidden
+    }
+    .title {
+        color: #FFF
+        position: relative
+        top: -4px
+        text-stroke: 1px rgba(0,0,0,0.1)
+        font-size: 38px
+        font-family: $MainFont
+        font-smoothing: antialiased
+    }
+    .meta-container {
+        top: 15px
+        height: 20px
+        position: relative
+        .item {
+            color: #FFF
+            font-size: 12px
+            position: relative
+            font-family: $MainFontBold
+            text-stroke: 1px rgba(0,0,0,0.1)
+            float: left
+            font-smoothing: antialiased
+        }
+        .dot {
+            margin: 4px 15px 0px 15px
+            position: relative
+            display: inline-block
+            width: 4px
+            float: left
+            height: 4px
+            border-radius: 2px
+            background-color: #dbdbdd
+        }
+        .movie-imdb-link {
+            margin-top: -3px
+            width: 27px
+            float: left
+            height: 16px
+            position: relative
+            cursor: pointer
+            background: url(../images/icons/imdb.png) no-repeat
+        }
+        .star-container {
+            width: auto
+            float: left
+            top: -2px
+            position: relative
+            z-index: 2
+        }
+    }
+    .overview {
+        position: relative
+        height: 50%
+        overflow: hidden
+        text-overflow: ellipsis
+        float: none
+        color: #FFF
+        top: 25px
+        padding-right: 5%
+        font-family: $MainFont
+        font-smoothing: antialiased
+        font-size: 13px
+        line-height: 22px
+        text-align: justify
+        text-stroke: 1px rgba(0,0,0,0.1)
+        backface-visibility: hidden
+		scrollable();
+    }
+    .health-icon {
+        position: relative
+        font-size: 14px
+        float: right
+        margin-right: 5%
+        margin-top: -1px
+        color: #737577
+        cursor: pointer
+        &.Bad {
+            color: #d53f3f
+        }
+        &.Medium {
+            color: #ece523
+        }
+        &.Good {
+            color: #a3e147
+        }
+        &.Excellent {
+            color: #2ad942
+        }
+    }
+    .bottom-container {
+        position: absolute
+        float: left
+        left: 8%
+        width: 100%
+        bottom: 0
+        padding-left: 50vh
+
+        .button {
+            position: relative
+            cursor: pointer
+            float: left
+            bottom: 0
+            height: 35px
+            margin-right: 15px
+            border-radius: $ButtonRadius
+            background-clip: padding-box
+            background-color: $ButtonBg
+            padding: 0 15px
+            transition: background-color 0.5s
+            color: $ButtonText
+            font-family: $MainFont
+            font-smoothing: antialiased
+            text-align: center
+            font-size: 12px
+            line-height: 34px
+            &:hover {
+                background: $ButtonBgHover
+                text-decoration: none
+            }
+            &:active {
+                box-shadow: inset 0 1px 4px rgba(0,0,0,0.6)
+                background: $ButtonBgActive
+            }
+        }
+        .favourites-toggle {
+            cursor: pointer
+            padding-left: 24px
+            bottom: 6px
+            color: #FFF
+            height: 18px
+            position: relative
+            width: 200px
+            font-family: $MainFont
+            font-smoothing: antialiased
+            font-size: 12px
+            line-height: 17px
+            &:before {
+                content: "\f004"
+                font-family: FontAwesome
+                position: absolute
+                font-size: 18px
+                color: #FFF
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                opacity: 1
+                transition: opacity 0.5s
+            }
+            &:after {
+                content: "\f004"
+                font-family: FontAwesome
+                position: absolute
+                font-size: 18px
+                color: $ButtonBgActive
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                opacity: 0
+                transition: opacity 0.5s
+            }
+            &:hover {
+                &:before {
+                    opacity: 0
+                }
+                &:after {
+                    opacity: 1
+                }
+            }
+            &.selected {
+                height: 18px
+                position: relative
+                width: 200px
+                &:before {
+                    content: "\f004"
+                    font-family: FontAwesome
+                    position: absolute
+                    font-size: 18px
+                    color: $FavoriteColor
+                    top: 0
+                    left: 0
+                    bottom: 0
+                    right: 0
+                    opacity: 1
+                    transition: opacity 0.5s
+                }
+                &:after {
+                    content: "\f004"
+                    font-family: FontAwesome
+                    position: absolute
+                    font-size: 18px
+                    color: #FFF
+                    top: 0
+                    left: 0
+                    bottom: 0
+                    right: 0
+                    opacity: 0
+                    transition: opacity 0.5s
+                }
+                &:hover {
+                    &:before {
+                        opacity: 0
+                    }
+                    &:after {
+                        opacity: 1
+                    }
+                }
+            }
+        }
+        .movie-quality-container {
+            margin-top: 10px
+            float: left
+            position: relative
+            height: 15px
+            width: 95px
+            left: 5%
+        }
+        .q720 {
+            font-family: $MainFontBold
+            font-smoothing: antialiased
+            font-size: 11px
+            color: #fff
+            font-weight: normal
+            position: absolute
+        }
+        .q1080 {
+            font-family: $MainFontBold
+            font-smoothing: antialiased
+            font-size: 11px
+            color: #fff
+            font-weight: normal
+            left: 58px
+            position: absolute
+        }
+        .switch {
+            background: transparent
+            border-radius: 32px
+            display: block
+            height: 12px
+            position: absolute
+            left: 28px
+            width: 25px
+            border: 2px solid #fff
+            cursor: pointer
+            label {
+                transition: color 0.2s ease
+                width: 20px
+                cursor: pointer
+                &:nth-of-type(1) {
+                    left: -38px
+                    position: absolute
+                    text-align: right
+                }
+                &:nth-of-type(2) {
+                    position: absolute
+                    right: -30px
+                    text-align: left
+                }
+            }
+            input {
+                height: 7px
+                left: -27px
+                opacity: 0
+                position: absolute
+                top: -4px
+                width: 79px
+                z-index: 2
+                cursor: pointer
+                &:checked {
+                    z-index: 0
+                    & ~ label {
+                        &:nth-of-type(1) {
+                            color: $ButtonBgActive
+                        }
+                        &:nth-of-type(2) {
+                            color: #fff
+                        }
+                    }
+                    & ~ .toggle {
+                        left: 0px
+                    }
+                }
+                & ~ :checked {
+                    & ~ label {
+                        &:nth-of-type(1) {
+                            color: #fff
+                        }
+                        &:nth-of-type(2) {
+                            color: $ButtonBgActive
+                        }
+                    }
+                    & ~ .toggle {
+                        left: 11px
+                    }
+                }
+            }
+        }
+        .toggle {
+            transition: left 0.2s ease
+            background: $ButtonBgActive
+            border-radius: 50%
+            height: 10px
+            left: -0px
+            position: absolute
+            top: -1px
+            width: 10px
+        }
+        .sub-dropdown {
+            position: absolute
+            height: 26px
+            width: auto
+            top: -11px
+            right: 13.56%
+            color: #FFF
+            font-family: $MainFont
+            font-smoothing: antialiased
+            font-size: 12px
+            line-height: 17px
+            cursor pointer
+            padding: 5px
+            padding-right: 13px
+
+            &.open {
+                background-color: rgba($ButtonBgActive,0.6);
+                border-radius: 5px 5px 0 0;
+            }
+
+        }
+        .sub-dropdown-arrow {
+            width: 0
+            height: 0
+            border-left: 4px solid transparent
+            border-right: 4px solid transparent
+            top: 10px
+            position: absolute
+            float: left
+            right: 5px
+            border-top: 5px solid #c4c6c8
+            border-bottom: none
+
+            &.down {
+                border-bottom: 5px solid #c4c6c8
+                border-top: none
+            }
+        }
+        .flag-container {
+            position: absolute
+            width: auto
+            max-width: 24.9%
+            right: 13.56%
+            overflow-x: hidden
+            overflow-y: hidden
+            display: none
+            height: auto
+            background: rgba(20, 24, 26, 0.6)
+        }
+        .flag {
+            margin: 4px
+            background-size: 22px 16px
+            position: relative
+            float: right
+            cursor: pointer
+            background-image: url("../images/flags/none.png")
+            width: 22px
+            height: 16px
+            &.NA {
+                background-image: url("../images/flags/none.png")
+            }
+            &.toggle {
+                top: -22px
+                border-radius: 0
+                background-color: transparent
+            }
+            &.bn {
+                background-image: url("../images/flags/bengali.png")
+            }
+            &.bs {
+                background-image: url("../images/flags/bosnian.png")
+            }
+            &.pt-br {
+                background-image: url("../images/flags/brazilian.png")
+            }
+            &.bg {
+                background-image: url("../images/flags/bulgarian.png")
+            }
+            &.hr {
+                background-image: url("../images/flags/croatian.png")
+            }
+            &.cs {
+                background-image: url("../images/flags/czech.png")
+            }
+            &.da {
+                background-image: url("../images/flags/danish.png")
+            }
+            &.nl {
+                background-image: url("../images/flags/dutch.png")
+            }
+            &.en {
+                background-image: url("../images/flags/english.png")
+            }
+            &.et {
+                background-image: url("../images/flags/estonian.png")
+            }
+            &.eu {
+                background-image: url("../images/flags/basque.png")
+            }
+            &.fa {
+                background-image: url("../images/flags/farsi.png")
+            }
+            &.fi {
+                background-image: url("../images/flags/finnish.png")
+            }
+            &.fr {
+                background-image: url("../images/flags/french.png")
+            }
+            &.de {
+                background-image: url("../images/flags/german.png")
+            }
+            &.he {
+                background-image: url("../images/flags/hebrew.png")
+            }
+            &.hy {
+                background-image: url("../images/flags/hungarian.png")
+            }
+            &.it {
+                background-image: url("../images/flags/italian.png")
+            }
+            &.lv {
+                background-image: url("../images/flags/latvian.png")
+            }
+            &.lt {
+                background-image: url("../images/flags/lithuanian.png")
+            }
+            &.mt {
+                background-image: url("../images/flags/maltese.png")
+            }
+            &.ar {
+                background-image: url("../images/flags/arabic.png")
+            }
+            &.pl {
+                background-image: url("../images/flags/polish.png")
+            }
+            &.pt {
+                background-image: url("../images/flags/portuguese.png")
+            }
+            &.ro {
+                background-image: url("../images/flags/romanian.png")
+            }
+            &.ru {
+                background-image: url("../images/flags/russian.png")
+            }
+            &.sr {
+                background-image: url("../images/flags/serbian.png")
+            }
+            &.sk {
+                background-image: url("../images/flags/slovak.png")
+            }
+            &.sl {
+                background-image: url("../images/flags/slovenian.png")
+            }
+            &.es {
+                background-image: url("../images/flags/spanish.png")
+            }
+            &.th {
+                background-image: url("../images/flags/thai.png")
+            }
+            &.tr {
+                background-image: url("../images/flags/turkish.png")
+            }
+            &.uk {
+                background-image: url("../images/flags/ukrainian.png")
+            }
+            &.el {
+                background-image: url("../images/flags/greek.png")
+            }
+            &.hu {
+                background-image: url("../images/flags/hungarian.png")
+            }
+            &.zh {
+                background-image: url("../images/flags/chinese.png")
+            }
+        }
+    }
+}

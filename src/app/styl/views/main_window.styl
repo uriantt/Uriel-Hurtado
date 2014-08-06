@@ -1,0 +1,104 @@
+html,
+body,
+.main-window-region
+    background-color $BgColor1
+    height 100%
+    -moz-user-select none
+    -khtml-user-select none
+    -webkit-user-select none
+    -o-user-select none
+
+#main-window
+    width 100%
+    height 100%
+    background-color $BgColor1
+    box-shadow 0 0 40px rgba(0, 0, 0, .75)
+    margin-left auto
+    margin-right auto
+
+    font-family $MainFont, $Font, $AlternateFont
+    -webkit-font-smoothing antialiased
+
+    cursor default
+
+    button
+        background-color transparent
+        border none
+        cursor pointer
+        outline none
+
+    #content
+        position absolute
+        width 100%
+        height 100%
+        overflow hidden
+
+.drop-indicator 
+    position fixed
+    background-color $ButtonBgActive
+    z-index 1000
+    display none
+
+    &.right 
+        top: 6px
+        right: 0px
+        width: 6px
+        height: 100%
+    &.left
+        bottom: 6px
+        left: 0px
+        width: 6px
+        height: 100%
+    &.bottom 
+        bottom 0px
+        right 6px
+        width 100%
+        height 6px
+    &.top
+        top: 0px
+        left: 6px
+        width: 100%
+        height: 6px
+
+#drop-mask 
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 999
+    display: none
+    -webkit-filter blur(5px)
+    filter blur(5px)
+
+.close-icon
+    top: 78px
+    right: 20px
+    position: fixed
+    color: $CloseButton
+    font-size: 25px
+    line-height: 25px
+    cursor pointer
+    z-index 100
+    transition all .5s
+    font-smoothing: antialiased
+
+    &:hover
+        color $CloseButtonHover
+        transition all .5s
+
+#svg-gradients
+    z-index -999
+    width 0px
+    height 0px
+
+.star
+    fill #ffc900
+    
+.star-half
+    fill unquote('url(#rating-half-gradient)')
+    
+.star-empty
+    fill #a3a5a7
+
+.knm
+	transition: all 3000ms ease-in-out;
+	transform:rotate(180deg);
